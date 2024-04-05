@@ -19,7 +19,8 @@
                     {{#each collections}}
                     <div class="collection-item">
                         <div class="collection-item-cover">
-                            <img src="{{Album.imageurl}}" alt="{{Album.name}}" title="{{Album.name}}">
+                            <img src="{{#if Album.imageurl}}{{Album.imageurl}}{{else}}/images/default-cover.jpg{{/if}}"
+                                alt="{{Album.name}}" title="{{Album.name}}">
                         </div>
                         <div class="collection-item-title-container">
                             <span class="collection-item-title-text">{{Album.name}}</span>
