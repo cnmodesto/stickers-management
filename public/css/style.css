@@ -508,3 +508,7 @@ button:hover {
 pre {
     margin: 0 auto;
 }
+
+.fa-md {
+    margin-right: 6px;
+}

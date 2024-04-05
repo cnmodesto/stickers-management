@@ -4,7 +4,11 @@
             <div class="wrapper-title">
                 <div class="row">
                     <div class="col-md-5">
+                        {{#if deleteForm}}
+                        <h2>Excluir <b>Coleção</b></h2>
+                        {{else}}
                         <h2>Adicionar <b>Coleção</b></h2>
+                        {{/if}}
                     </div>
                     <div class="col-md-7">
                         <a class="btn btn-secondary" href="/collections"><i class="fa fa-arrow-circle-left"
@@ -14,6 +18,20 @@
             </div>
             <div class="wrapper-items">
                 <div class="collection-infos-container">
+                    {{#if deleteForm}}
+                    <div class="collection-cover">
+                        <img src="{{collection.Album.imageurl}}" alt="{{collection.Album.name}}"
+                            title="{{collection.Album.name}}">
+                    </div>
+                    <div class="collection-infos">
+                        <p><b>Nome do Álbum:</b> {{collection.Album.name}}</p>
+                        <p><b>Descrição da Coleção:</b> {{collection.Album.description}}</p>
+                        <p><b>Editora:</b> {{collection.Album.editor}}</p>
+                        <p><b>Ano de Lançamento:</b> {{collection.Album.year}}</p>
+                        <p><b>Categoria:</b> {{collection.Album.category}}</p>
+                        {{#if collection.Album.ordercode}}<p><b>Código de Pedido:</b> {{collection.Album.ordercode}}</p>{{/if}}
+                    </div>
+                    {{else}}
                     <div class="collection-cover">
                         <img src="{{album.imageurl}}" alt="{{album.name}}"
                             title="{{album.name}}">
@@ -26,6 +44,7 @@
                         <p><b>Categoria:</b> {{album.category}}</p>
                         {{#if album.ordercode}}<p><b>Código de Pedido:</b> {{album.ordercode}}</p>{{/if}}
                     </div>
+                    {{/if}}
                 </div>
 
                 <div id="form-box" class="col-md-12">

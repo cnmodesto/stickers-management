@@ -52,8 +52,10 @@
                             </div>
                         </div>
                         <div class="progresso-tabela-buttons">
-                            <button type="submit" class="btn btn-primary btn-block button"
-                                onclick="confirm('Você tem certeza?')">Salvar</button>
+                            <button type="submit" class="btn btn-primary btn-block button">
+                                <i class="fa fa-floppy-o fa-lg fa-md" aria-hidden="true"></i>
+                                Salvar
+                            </button>
                         </div>
                     </form>
                     <div class="container-actions">
@@ -61,10 +63,21 @@
                             <p><span class="span-actions">Ações</span></p>
                         </div>
                         <div class="actions-buttons">
-                            <button id="btn-completar" class="btn btn-primary button">Completar</button>
-                            <button id="btn-limpar" class="btn btn-primary button">Limpar</button>
-                            <button id="btn-compartilhar-faltantes" class="btn btn-primary button" data-toggle="modal" data-target="#modal-faltantes">Compartilhar
-                                Faltantes</button>
+                            <button id="btn-completar" class="btn btn-primary button">
+                                <i class="fa fa-check-square fa-lg fa-md" aria-hidden="true"></i>
+                                Completar
+                            </button>
+                            <button id="btn-limpar" class="btn btn-primary button">
+                                <i class="fa fa-eraser fa-lg fa-md" aria-hidden="true"></i>
+                                Limpar
+                            </button>
+                            <button id="btn-compartilhar-faltantes" class="btn btn-primary button" data-toggle="modal" data-target="#modal-faltantes">
+                                <i class="fa fa-share fa-lg fa-md" aria-hidden="true"></i>
+                                Compartilhar Faltantes
+                            </button>
+                            <a class="btn btn-secondary button" href="/collections">
+                                <i class="fa fa-arrow-left fa-lg fa-md" aria-hidden="true"></i>Sair
+                            </a>
                         </div>
                     </div>
                 </div>

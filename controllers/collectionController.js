@@ -188,10 +188,15 @@ exports.renderDeleteCollectionForm = async (req, res) => {
     try {
         const collectionId = req.params.id;
         const deleteForm = true;
-        const collection = await Collection.findByPk(collectionId);
+        const collection = await Collection.findByPk(
+            collectionId,
+            {include: Album}
+        );
         if(!collection) {
             return res.status(404).send('Coleção não encontrada');
         }
+
+        console.log(collection);
         res.render('collections/collectionForm', { collection, deleteForm });
     } catch (err) {
         const status = {
