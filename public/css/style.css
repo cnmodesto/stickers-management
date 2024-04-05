@@ -496,7 +496,8 @@ button:hover {
     opacity: 0.8 !important;
 }
 
-.code-pre-album-title {
+.code-pre-album-title, 
+.code-pre-album-qtdefaltantes {
     white-space: initial;
 }
 

@@ -47,6 +47,9 @@ app.use((req, res, next) => {
     next();
 });
 
+// Configurações de processamento do body-parser
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 1000000}));
+
 // Inicialização do Passport.js
 app.use(passport.initialize());
 app.use(passport.session());

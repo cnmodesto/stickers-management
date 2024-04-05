@@ -25,6 +25,15 @@
                         <p><b>Ano de Lançamento:</b> {{collection.Album.year}}</p>
                         <p><b>Categoria:</b> {{collection.Album.category}}</p>
                         {{#if collection.Album.ordercode}}<p><b>Código de Pedido:</b> {{collection.Album.ordercode}}</p>{{/if}}
+                        <p>
+                            <button type="button" class="btn btn-primary">
+                                Total de Figurinhas: <span id="badge-total-figurinhas" class="badge badge-light"></span>
+                                / Faltantes: <span id="badge-faltantes" class="badge badge-light"></span>
+                                <span class="sr-only">Figurinhas faltantes</span>
+                            </button>
+                        </p>
+
+
                     </div>
                 </div>
                 <div class="progresso-tabela-container">
@@ -79,6 +88,10 @@
                                         </pre>
                                         <pre> </pre>
                                         <pre class="code-pre-album-faltantes"><code id="faltantes-body"></code></pre>
+                                        <pre> </pre>
+                                        <pre class="code-pre-album-qtdefaltantes">
+                                            Total de faltantes: <code id="code-pre-quantidade-faltantes"></code>
+                                        </pre>
                                     </div>
                                 </div>
                             </div>
