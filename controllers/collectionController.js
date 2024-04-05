@@ -8,11 +8,6 @@ const { Op } = require('sequelize');
 // Lista todas as coleções do usuário logado (/collections -- método GET)
 exports.getAllCollections = async (req, res) => {
     try {
-        // const collections = await Collection.findAll({
-        //     where: { user_id: req.user.id },
-        //     include: Album
-        // });
-
         // Retorna as coleções em progresso (com qualquer registro em Progress com status = '')
         const progressCollections = await Collection.findAll({
             include: [
