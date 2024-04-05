@@ -63,6 +63,9 @@ const hbs = require('hbs');
 hbs.registerHelper('equal', function (val1, val2, options) {
     return val1 === val2 ? options.fn(this) : options.inverse(this);
 });
+hbs.registerHelper('length', function (val1) {
+    return val1.length;
+});
 
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));

@@ -18,8 +18,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul id="tabs" class="nav nav-tabs">
-                            <li class="nav-item"><a href="" data-target="#em-progresso" data-toggle="tab" class="nav-link small text-uppercase active">Em Progresso</a></li>
-                            <li class="nav-item"><a href="" data-target="#completas" data-toggle="tab" class="nav-link small text-uppercase ">Completas</a></li>
+                            <li class="nav-item">
+                                <a href="" data-target="#em-progresso" data-toggle="tab" class="nav-link small text-uppercase active">
+                                    Em Progresso
+                                    <span class="badge badge-primary">{{#length progressCollections}}{{/length}}</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" data-target="#completas" data-toggle="tab" class="nav-link small text-uppercase ">
+                                    Completas
+                                    <span class="badge badge-primary">{{#length fullCollections}}{{/length}}</span>
+                                </a>
+                            </li>
                         </ul>
                         <br>
                         <div id="tabsContent" class="tab-content">
