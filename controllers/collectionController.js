@@ -2,15 +2,53 @@ const Collection = require('../models/collection');
 const Album = require('../models/album');
 const Sticker = require('../models/sticker');
 const Progress = require('../models/progress');
+const sequelize = require('../config/database');
+const { Op } = require('sequelize');
 
 // Lista todas as coleções do usuário logado (/collections -- método GET)
 exports.getAllCollections = async (req, res) => {
     try {
-        const collections = await Collection.findAll({
-            where: { user_id: req.user.id },
-            include: Album
+        // const collections = await Collection.findAll({
+        //     where: { user_id: req.user.id },
+        //     include: Album
+        // });
+
+        // Retorna as coleções em progresso (com qualquer registro em Progress com status = '')
+        const progressCollections = await Collection.findAll({
+            include: [
+                { 
+                    model: Album 
+                },
+                {
+                    model: Progress,
+                    where: { status: '' },
+                    required: true
+                }
+            ],
+            where: { user_id: req.user.id }
         });
-        res.render('collections/collections', { collections });
+
+        // Retorna as coleções completas (sem qualquer registro em Progress com status = '')
+        const fullCollections = await Collection.findAll({
+            include: [
+                { 
+                    model: Album 
+                },
+                {
+                    model: Progress,
+                    where: { status: 'ok' },
+                    required: true
+                }
+            ],
+            where: {
+                user_id: req.user.id,
+                id: {
+                    [Op.notIn]: sequelize.literal('(SELECT collection_id FROM Progresses WHERE status = \'\')')
+                }    
+            }
+        });
+        
+        res.render('collections/collections', { progressCollections, fullCollections });
     } catch (err) {
         const status = {
             code: '500',
@@ -109,7 +147,6 @@ exports.renderUpdateCollectionProgressForm = async (req, res) => {
         if(!collection) {
             return res.status(404).send('Coleção não encontrada');
         }
-        console.log(collection);
         res.render('progress/progressForm', { progress, collection });
     } catch (err) {
         const status = {
@@ -121,7 +158,7 @@ exports.renderUpdateCollectionProgressForm = async (req, res) => {
     }
 }
 
-// // Processar a atualização de progresso da coleção (/collections/:id -- método PUT)
+// Processar a atualização de progresso da coleção (/collections/:id -- método PUT)
 exports.updateCollectionProgress = async (req, res) => {
     try {    
         let { id, status } = req.body;
@@ -130,13 +167,17 @@ exports.updateCollectionProgress = async (req, res) => {
             return res.status(404).send('Ocorreu algum erro na passagem de valores.');
         }
 
-        const updates = id.map((id, index) => {
-            return Progress.update({ status: status[index] }, { where: { id: id } })
+        const updates = id.map((id, index) => ({ id, status: status[index] }));
+        Progress.bulkCreate(updates, { 
+            updateOnDuplicate: ['status'],
+            where: {
+                id: ['id']
+            }
+        })
+        .then(() => {
+            res.redirect('/collections');
         });
 
-        await Promise.all(updates);
-
-        res.redirect('/collections');
     } catch (err) {
         const status = {
             code: '500',

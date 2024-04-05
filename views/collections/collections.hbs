@@ -15,30 +15,68 @@
                 </div>
             </div>
             <div class="wrapper-items">
-                <div class="collections-container">
-                    {{#each collections}}
-                    <div class="collection-item">
-                        <div class="collection-item-cover">
-                            <img src="{{#if Album.imageurl}}{{Album.imageurl}}{{else}}/images/default-cover.jpg{{/if}}"
-                                alt="{{Album.name}}" title="{{Album.name}}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul id="tabs" class="nav nav-tabs">
+                            <li class="nav-item"><a href="" data-target="#em-progresso" data-toggle="tab" class="nav-link small text-uppercase active">Em Progresso</a></li>
+                            <li class="nav-item"><a href="" data-target="#completas" data-toggle="tab" class="nav-link small text-uppercase ">Completas</a></li>
+                        </ul>
+                        <br>
+                        <div id="tabsContent" class="tab-content">
+                            <div id="em-progresso" class="tab-pane fade active show">
+                                <div class="collections-container">
+                                    {{#each progressCollections}}
+                                    <div class="collection-item">
+                                        <div class="collection-item-cover">
+                                            <img src="{{#if Album.imageurl}}{{Album.imageurl}}{{else}}/images/default-cover.jpg{{/if}}"
+                                                alt="{{Album.name}}" title="{{Album.name}}">
+                                        </div>
+                                        <div class="collection-item-title-container">
+                                            <span class="collection-item-title-text">{{Album.name}}</span>
+                                        </div>
+                                        <div class="collection-item-description-container">
+                                            <span class="collection-item-description-text">{{description}}</span>
+                                        </div>
+                                        <div class="collection-item-button-container">
+                                            <a class="btn btn-primary collection-item-button" href="/collections/{{id}}/edit">Atualizar</a>
+                                        </div>
+                                        <div class="collection-item-button-container">
+                                            <a class="btn btn-danger collection-item-button"
+                                                href="/collections/{{id}}/delete">Excluir</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <div id="completas" class="tab-pane fade">
+                                <div class="collections-container">
+                                    {{#each fullCollections}}
+                                    <div class="collection-item">
+                                        <div class="collection-item-cover">
+                                            <img src="{{#if Album.imageurl}}{{Album.imageurl}}{{else}}/images/default-cover.jpg{{/if}}"
+                                                alt="{{Album.name}}" title="{{Album.name}}">
+                                        </div>
+                                        <div class="collection-item-title-container">
+                                            <span class="collection-item-title-text">{{Album.name}}</span>
+                                        </div>
+                                        <div class="collection-item-description-container">
+                                            <span class="collection-item-description-text">{{description}}</span>
+                                        </div>
+                                        <div class="collection-item-button-container">
+                                            <a class="btn btn-primary collection-item-button" href="/collections/{{id}}/edit">Atualizar</a>
+                                        </div>
+                                        <div class="collection-item-button-container">
+                                            <a class="btn btn-danger collection-item-button"
+                                                href="/collections/{{id}}/delete">Excluir</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
                         </div>
-                        <div class="collection-item-title-container">
-                            <span class="collection-item-title-text">{{Album.name}}</span>
-                        </div>
-                        <div class="collection-item-description-container">
-                            <span class="collection-item-description-text">{{description}}</span>
-                        </div>
-                        <div class="collection-item-button-container">
-                            <a class="btn btn-primary collection-item-button" href="/collections/{{id}}/edit">Atualizar</a>
-                        </div>
-                        <div class="collection-item-button-container">
-                            <a class="btn btn-danger collection-item-button"
-                                href="/collections/{{id}}/delete">Excluir</a>
-                        </div>
-
                     </div>
-                    {{/each}}
                 </div>
             </div>
         </div>
     </div>
+</div>
