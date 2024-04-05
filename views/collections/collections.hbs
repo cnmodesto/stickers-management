@@ -1,0 +1,43 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>Gerenciar <b>Coleções</b></h2>
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/albums"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i> <span>Voltar</span></a>
+                        <a class="btn btn-secondary" href="/collections/add"><i class="fa fa-plus-square"
+                                aria-hidden="true"></i> <span>Adicionar Coleção</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-items">
+                <div class="collections-container">
+                    {{#each collections}}
+                    <div class="collection-item">
+                        <div class="collection-item-cover">
+                            <img src="{{Album.imageurl}}" alt="{{Album.name}}" title="{{Album.name}}">
+                        </div>
+                        <div class="collection-item-title-container">
+                            <span class="collection-item-title-text">{{Album.name}}</span>
+                        </div>
+                        <div class="collection-item-description-container">
+                            <span class="collection-item-description-text">{{description}}</span>
+                        </div>
+                        <div class="collection-item-button-container">
+                            <a class="btn btn-primary collection-item-button" href="/collections/{{id}}/edit">Atualizar</a>
+                        </div>
+                        <div class="collection-item-button-container">
+                            <a class="btn btn-danger collection-item-button"
+                                href="/collections/{{id}}/delete">Excluir</a>
+                        </div>
+
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>

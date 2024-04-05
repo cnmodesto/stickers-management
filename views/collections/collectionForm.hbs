@@ -1,0 +1,54 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>Adicionar <b>Coleção</b></h2>
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/collections"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i> <span>Voltar</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-items">
+                <div class="collection-infos-container">
+                    <div class="collection-cover">
+                        <img src="{{album.imageurl}}" alt="{{album.name}}"
+                            title="{{album.name}}">
+                    </div>
+                    <div class="collection-infos">
+                        <p><b>Nome do Álbum:</b> {{album.name}}</p>
+                        <p><b>Descrição da Coleção:</b> {{album.description}}</p>
+                        <p><b>Editora:</b> {{album.editor}}</p>
+                        <p><b>Ano de Lançamento:</b> {{album.year}}</p>
+                        <p><b>Categoria:</b> {{album.category}}</p>
+                        {{#if album.ordercode}}<p><b>Código de Pedido:</b> {{album.ordercode}}</p>{{/if}}
+                    </div>
+                </div>
+
+                <div id="form-box" class="col-md-12">
+                    {{#if deleteForm}}
+                    <form action="/collections/{{collection.id}}?_method=DELETE" method="post">
+                    {{else}}
+                    <form action="/collections/add" method="post">
+                    {{/if}}
+                        <div class="form-group">
+                            <label for="description">Nome da Coleção</label>
+                            <input type="text" class="form-control" name="description" id="description"
+                                placeholder="" {{#if collection.description}} value="{{collection.description}}"
+                                {{/if}} {{#if deleteForm}}disabled {{/if}}required>
+                        </div>
+                        <input type="hidden" name="album_id" value="{{album.id}}">
+                        <input type="hidden" name="user_id" value="{{user.id}}">
+
+                        <button type="submit" class="btn btn-primary button" {{#if deleteForm}}onclick="confirm('Você tem certeza?')"{{/if}}>
+                            {{#if deleteForm}}Excluir{{else}}Criar{{/if}}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

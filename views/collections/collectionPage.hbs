@@ -1,0 +1,34 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>Selecionar <b>Coleção</b></h2>
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/collections"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i> <span>Voltar</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-items">
+                <div class="available-albums-container">
+                    {{#each albums}}
+                    <div class="available-album-item">
+                        <div class="available-album-item-cover">
+                            <img src="{{#if imageurl}}{{imageurl}}{{else}}/images/default-cover.jpg{{/if}}" alt="{{name}}" title="{{name}}">
+                        </div>
+                        <div class="available-album-item-title-container">
+                            <span class="available-album-item-title-text">{{name}}</span>
+                        </div>
+                        <div class="available-album-item-button-container">
+                            <a class="btn btn-primary available-album-item-button" href="/collections/add/{{id}}/confirm">Adicionar</a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

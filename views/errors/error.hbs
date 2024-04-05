@@ -1,0 +1,26 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>Erro <b>{{status.code}}</b></h2>
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/albums"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i> <span>Voltar</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-items">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container text-center">
+                        <h1 class="status-code">{{status.code}}</h1>
+                        <p class="status-info">{{status.info}}</p>
+                        <p class="status-text">{{status.text}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

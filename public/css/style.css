@@ -1,0 +1,509 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#add-form-container {
+    margin-top: 80px;
+}
+
+#form-box,
+#available-albums-box,
+#albums-box,
+#collections-box {
+    margin-top: 15px;
+}
+
+#list-box {
+    margin-top: 30px;
+}
+
+.list {
+    padding-inline-start: 0;
+}
+
+.list-item {
+    margin: 10px 0;
+    list-style-type: none;
+}
+
+.action-icons {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#add-sticker-number-row,
+#remove-sticker-number-row {
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.sticker-number-row {
+    margin-bottom: 10px;
+}
+
+.bg-dark {
+    background-color: rgb(0, 50, 74) !important;
+}
+
+/* Álbuns e coleções */
+.albums-container,
+.available-albums-container,
+.collections-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 15px 0;
+}
+
+
+.available-album-item,
+.album-item,
+.collection-item {
+    width: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.album-item {
+    height: 375px;
+}
+
+.available-album-item {
+    height: 335px;
+}
+
+.collection-item {
+    height: 405px;
+}
+
+.album-item-cover img,
+.available-album-item-cover img,
+.collection-item-cover img {
+    width: 172px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.available-album-item-title-container,
+.collection-item-title-container,
+.album-item-title-container {
+    margin-top: 10px;
+    width: 172px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.collection-item-description-container {
+    margin: 5px 0 15px;
+    width: 172px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #495057;
+}
+
+.album-item-title-text,
+.available-album-item-title-text,
+.collection-item-title-text {
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #495057;
+}
+
+.available-album-item-button-container {
+    margin-top: 5px;
+}
+
+.collection-item-button-container,
+.album-item-button-container {
+    margin-top: 10px;
+}
+
+.album-item-button,
+.available-album-item-button,
+.collection-item-button {
+    width: 100%;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.progresso-infos-container,
+.collection-infos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: 258px;
+    margin: 10px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.progresso-cover img,
+.collection-cover img {
+    width: 172px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.progresso-infos p,
+.collection-infos p {
+    margin: 0 0 5px 10px;
+    text-align: left;
+}
+
+.progresso-tabela-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 10px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.progresso-tabela-conteudo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.progresso-tabela-itens {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+.progresso-tabela-item {
+    padding: 5px 0;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.15s ease-in-out;
+    border: solid 1px #dadada;
+    flex: 0 0 calc(5%);
+    font-size: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.progresso-tabela-item:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.progresso-tabela-item-button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    /* color: #2f2f2f; */
+}
+
+.fig-blank-btn-text {
+    color: #2f2f2f;
+}
+
+.fig-ok-btn-text {
+    color: white;
+}
+
+.fig-blank {
+    background-color: white;
+}
+
+.fig-ok {
+    background-color: #2f2f2f;
+}
+
+.container-actions {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+.actions-infos {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    padding-top: 25px;
+}
+
+.actions-buttons {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+.button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3%;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #0b5ed7;
+}
+
+#dynamic-form {
+    margin-top: 150px;
+    margin-left: 100px;
+}
+
+.item-row {
+    margin-bottom: 10px;
+}
+
+.remove-item-btn {
+    margin-left: 10px;
+}
+
+.main {
+    padding-bottom: 50px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+}
+
+.wrapper {
+    min-width: 1000px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+}
+
+.wrapper-title {
+    background: #299be4;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -10px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+
+.wrapper-title h2 {
+    margin: 5px 0 0;
+    font-size: 24px;
+}
+
+.wrapper-title .btn {
+    color: #566787;
+    float: right;
+    font-size: 13px;
+    background: #fff;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+
+.wrapper-title .btn:hover,
+.wrapper-title .btn:focus {
+    color: #566787;
+    background: #f2f2f2;
+}
+
+.wrapper-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+}
+
+.wrapper-title .btn span {
+    float: left;
+    margin-top: 2px;
+}
+
+.wrapper-table,
+.wrapper-items {
+    min-width: 1000px;
+    padding: 16px 30px;
+    margin: -5px -40px 10px;
+    border-radius: 3px 3px 0 0;
+}
+
+.status-code {
+    font-size: 105px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.status-info {
+    font-size: 30px;
+    font-weight: bold;
+    color: #F44336;
+}
+
+.status-text {
+    font-size: 18px;
+    color: #495057;
+}
+
+.btn-actions {
+    border: none;
+    margin-right: 5px;
+    font-size: 12px;
+    color: white;
+    border-radius: 50%;
+    padding: 8px;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+}
+
+.wrapper-subtitle {
+    background: #435d7d;
+    color: #fff;
+    padding: 10px 16px;
+    margin: 0px -10px 15px;
+    border-radius: 2px 2px 0 0;
+}
+
+.wrapper-subtitle h3 {
+    margin: 5px 0 0;
+    font-size: 20px;
+}
+
+.login-form {
+    width: 425px;
+    margin: 35px auto;
+    font-size: 15px;
+}
+
+.login-form .form-group {
+    position: relative;
+}
+
+.login-form .form-control {
+    padding-left: 40px;
+}
+
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 50px 30px 30px;
+}
+
+.login-form i {
+    position: absolute;
+    left: 14px;
+    top: 10px;
+    font-size: 18px;
+    color: #495057;
+}
+
+#modal-faltantes .modal-dialog {
+    max-width: 700px;
+    margin: 3rem auto;
+}
+
+#modal-faltantes-body {
+    font-size: 12px;
+    text-align: justify;
+}
+
+
+
+/* Estilos adicionais para a área de código */
+.code-container {
+    display: flex;
+    flex-direction: column;
+}
+.code-header {
+    border-radius: 5px 5px 0px 0px;
+    margin: 20px 20px 0;
+    padding: 10px;
+    background-color: #676767;
+    color: rgb(180, 180, 180);
+}
+
+.code-body {
+    position: relative;
+    margin: 0 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    overflow-x: auto;
+}
+
+.copy-button {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    padding: 5px 10px;
+    color: #495057;
+    font-weight: 600;
+    background-color: rgb(180, 180, 180);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.copy-button:hover {
+    background-color: rgb(180, 180, 180);
+    opacity: 0.8 !important;
+}
+
+.code-pre-album-title {
+    white-space: initial;
+}
+
+.code-pre-album-faltantes {
+    white-space: pre-wrap;
+}
+
+pre {
+    margin: 0 auto;
+}

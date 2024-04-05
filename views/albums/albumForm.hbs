@@ -1,0 +1,191 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        {{#if updateForm}}
+                        <h2>Editar <b>Álbum</b></h2>
+                        {{else if deleteForm}}
+                        <h2>Excluir <b>Álbum</b></h2>
+                        {{else}}
+                        <h2>Adicionar <b>Álbum</b></h2>
+                        {{/if}}
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/albums"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i> <span>Voltar</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-items">
+                {{#if updateForm}}
+                <form action="/albums/{{album.id}}?_method=PUT" method="post">
+                {{else if deleteForm}}
+                <form action="/albums/{{album.id}}?_method=DELETE" method="post">
+                {{else}}
+                <form action="/albums/add" method="post">
+                {{/if}}
+                    <div class="form-group">
+                        <div class="wrapper-subtitle">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Informações</h3>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="form-row">
+                            <div class="col-4">
+                                <label for="name">Nome do Álbum</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="" {{#if
+                                    album}} value="{{album.name}}" {{/if}} {{#if deleteForm}}readonly{{/if}} required>
+                            </div>
+                            <div class="col-3">
+                                <label for="editor">Editora</label>
+                                <input type="text" class="form-control" name="editor" id="editor" placeholder=""
+                                    {{#if album}} value="{{album.editor}}" {{/if}} {{#if
+                                    deleteForm}}readonly{{/if}}>
+                            </div>
+                            <div class="col-3">
+                                <label for="category">Categoria</label>
+                                <input type="text" class="form-control" name="category" id="category" placeholder=""
+                                    {{#if album}} value="{{album.category}}" {{/if}} {{#if
+                                    deleteForm}}readonly{{/if}}>
+                            </div>
+                            <div class="col-2">
+                                <label for="year">Ano de Lançamento</label>
+                                <input type="text" class="form-control" name="year" id="year" placeholder="" {{#if
+                                    album}} value="{{album.year}}" {{/if}} {{#if deleteForm}}readonly{{/if}}>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrição e Outras Informações</label>
+                        <textarea type="text" class="form-control" name="description" id="description"
+                            placeholder="" {{#if
+                            deleteForm}}readonly{{/if}}>{{#if album}}{{album.description}}{{/if}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-4">
+                                <label for="country">País</label>
+                                <input type="text" class="form-control" name="country" id="country" placeholder=""
+                                    {{#if album}} value="{{album.country}}" {{/if}} {{#if
+                                    deleteForm}}readonly{{/if}}>
+                            </div>
+                            <div class="col-4">
+                                <label for="ordercode">Código do Álbum (Pedido de Faltantes)</label>
+                                <input type="text" class="form-control" name="ordercode" id="ordercode"
+                                    placeholder="" {{#if album}} value="{{album.ordercode}}" {{/if}} {{#if
+                                    deleteForm}}readonly{{/if}}>
+                            </div>
+                            <div class="col-4">
+                                <label for="imageurl">Capa do Álbum (URL)</label>
+                                <input type="text" class="form-control" name="imageurl" id="imageurl" placeholder=""
+                                    {{#if album}} value="{{album.imageurl}}" {{/if}} {{#if
+                                    deleteForm}}readonly{{/if}}>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="sticker-number-group">
+                        <div class="wrapper-subtitle">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Figurinhas</h3>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label>Prefixo</label> <small class="tip">(Figurinhas com numeração
+                                    especial)</small>
+                            </div>
+                            <div class="col-2">
+                                <label>Início</label>
+                            </div>
+                            <div class="col-2">
+                                <label>Fim</label>
+                            </div>
+                        </div>
+
+                        {{#if createForm}}
+                        <div id="items-container">
+                            <div class="item-row form-row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" name="prefix" class="prefix-input"
+                                        placeholder="Prefixo">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" name="sticker_number_start"
+                                        class="sticker_number_start-input" placeholder="Início">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" name="sticker_number_end"
+                                        class="sticker_number_end-input" placeholder="Fim">
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div id="items-container">
+                            {{#each stickers}}
+                            <div class="item-row form-row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" name="prefix" class="prefix-input"
+                                        placeholder="Prefixo" value="{{prefix}}" {{#if
+                                        ../deleteForm}}readonly{{/if}}>
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" name="sticker_number_start"
+                                        class="sticker_number_start-input" placeholder="Início" required="true"
+                                        value="{{sticker_number_start}}" {{#if ../deleteForm}}readonly{{/if}}>
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" name="sticker_number_end"
+                                        class="sticker_number_end-input" placeholder="Fim" required="true"
+                                        value="{{sticker_number_end}}" {{#if ../deleteForm}}readonly{{/if}}>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="remove-item-btn btn btn-primary button" {{#if
+                                        ../deleteForm}}disabled{{/if}}>
+                                        <i class="fa fa-trash-o fa-lg"></i> Remover Item
+                                    </button>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="form-group" id="sticker-number-group">
+                        <div class="form-row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary button" id="add-item-btn" {{#if
+                                    deleteForm}}disabled{{/if}}>Adicionar Item</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="hr">
+                    <div class="form-group" id="sticker-number-group">
+                        <div class="wrapper-subtitle">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Ações</h3>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary button" {{#if
+                                    deleteForm}}onclick="confirm('Are you right?')" {{/if}}>
+                                    {{#if createForm}}Criar{{else if updateForm}}Atualizar{{else}}Excluir{{/if}}
+                                </button>
+                                <a href="/albums" class="btn btn-primary button">Voltar</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/script_albumForm.js"></script>

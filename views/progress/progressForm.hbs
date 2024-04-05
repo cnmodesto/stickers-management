@@ -1,0 +1,96 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>Gerenciar <b>Progresso da Coleção</b></h2>
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/collections"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i> <span>Voltar</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-items">
+                <div class="progresso-infos-container">
+                    <div class="progresso-cover">
+                        <img src="{{collection.Album.imageurl}}" alt="{{collection.Album.name}}"
+                            title="{{collection.Album.name}}">
+                    </div>
+                    <div class="progresso-infos">
+                        <p><b>Nome do Álbum:</b> {{collection.Album.name}}</p>
+                        <p><b>Descrição da Coleção:</b> {{collection.description}}</p>
+                        <p><b>Editora:</b> {{collection.Album.editor}}</p>
+                        <p><b>Ano de Lançamento:</b> {{collection.Album.year}}</p>
+                        <p><b>Categoria:</b> {{collection.Album.category}}</p>
+                        {{#if collection.Album.ordercode}}<p><b>Código de Pedido:</b> {{collection.Album.ordercode}}</p>{{/if}}
+                    </div>
+                </div>
+                <div class="progresso-tabela-container">
+                    <form action="/collections/{{collection.id}}?_method=PUT" method="post">
+                        <div class="progresso-tabela-conteudo">
+                            <div class="progresso-tabela-itens">
+                                {{#each progress}}
+                                <div class="progresso-tabela-item {{#if status}}fig-ok{{else}}fig-blank{{/if}}">
+                                    <input type="button" name="item-button"
+                                        class="progresso-tabela-item-button {{#if status}}fig-ok-btn-text{{else}}fig-blank-btn-text{{/if}}"
+                                        value="{{Sticker.prefix}}{{Sticker.number}}">
+                                    <input type="hidden" name="id" value="{{id}}">
+                                    <input type="hidden" name="status" value="{{status}}">
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="progresso-tabela-buttons">
+                            <button type="submit" class="btn btn-primary btn-block button"
+                                onclick="confirm('Você tem certeza?')">Salvar</button>
+                        </div>
+                    </form>
+                    <div class="container-actions">
+                        <div class="actions-infos">
+                            <p><span class="span-actions">Ações</span></p>
+                        </div>
+                        <div class="actions-buttons">
+                            <button id="btn-completar" class="btn btn-primary button">Completar</button>
+                            <button id="btn-limpar" class="btn btn-primary button">Limpar</button>
+                            <button id="btn-compartilhar-faltantes" class="btn btn-primary button" data-toggle="modal" data-target="#modal-faltantes">Compartilhar
+                                Faltantes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Figurinhas Faltantes -->
+                <div class="modal" id="modal-faltantes">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Figurinhas Faltantes</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body" id="modal-faltantes-body">
+                                <div class="code-container">
+                                    <div class="code-header">
+                                        <button class="copy-button"><i class="fa fa-clone" aria-hidden="true"></i> Copiar</button>
+                                    </div>
+                                    <div class="code-body" id="code-body">
+                                        <pre class="code-pre-album-title">
+                                            Figurinhas Faltantes - Álbum: {{collection.Album.name}} ({{collection.description}})
+                                        </pre>
+                                        <pre> </pre>
+                                        <pre class="code-pre-album-faltantes"><code id="faltantes-body"></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger button" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/script_progressForm.js"></script>

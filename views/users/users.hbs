@@ -1,0 +1,46 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>Gerenciar <b>Usuários</b></h2>
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/users/add"><i class="fa fa-plus-square"
+                                aria-hidden="true"></i> <span>Adicionar Usuário</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-table">
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped table-hover">
+                        <thead class="thead-light">
+                            <th>#</th>
+                            <th>Usuário</th>
+                            <th>Email</th>
+                            <th>Perfil</th>
+                            <th>Ações</th>
+                        </thead>
+                        <tbody>
+                            {{#each users}}
+                            <tr>
+                                <th class="align-middle col-1" scope="row">{{id}}</th>
+                                <td class="align-middle col-2">{{user}}</td>
+                                <td class="align-middle col-4">{{email}}</td>
+                                <td class="align-middle col-3">{{role}}</td>
+                                <td class="align-middle col-2 text-center">
+                                    <a class="btn btn-primary btn-actions" href="/users/{{id}}/edit"><i
+                                            class="fa fa-wrench fa-lg" aria-hidden="true"></i></a>
+                                    <a class="btn btn-danger btn-actions" href="/users/{{id}}/delete"><i
+                                            class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

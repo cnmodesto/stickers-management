@@ -1,0 +1,73 @@
+<div id="add-form-container" class="container">
+    <div class="row">
+        <div class="col-md-12 wrapper">
+            <div class="wrapper-title">
+                <div class="row">
+                    <div class="col-md-5">
+                        {{#if updateForm}}
+                        <h2>Editar <b>Usuário</b></h2>
+                        {{else if deleteForm}}
+                        <h2>Excluir <b>Usuário</b></h2>
+                        {{else}}
+                        <h2>Adicionar <b>Usuário</b></h2>
+                        {{/if}}
+                    </div>
+                    <div class="col-md-7">
+                        <a class="btn btn-secondary" href="/users"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i> <span>Voltar</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-items">
+                {{#if updateForm}}
+                <form action="/users/{{user.id}}?_method=PUT" method="post">
+                {{else if deleteForm}}
+                <form action="/users/{{user.id}}?_method=DELETE" method="post">
+                {{else}}
+                <form action="/users/add" method="post">
+                {{/if}}
+                    <div class="form-group">
+                        <label for="user">Nome de usuário</label>
+                        <input type="text" class="form-control" name="user" id="user" 
+                            placeholder="Usuários" 
+                            {{#if updateForm}} value="{{user.user}}" {{/if}} 
+                            {{#if deleteForm}} value="{{user.user}}" readonly{{/if}}>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" name="email" id="email" 
+                            placeholder="E-mail" 
+                            {{#if updateForm}} value="{{user.email}}" {{/if}} 
+                            {{#if deleteForm}} value="{{user.email}}" readonly{{/if}}>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Senha</label>
+                        <input type="password" class="form-control" name="password" id="password" 
+                            placeholder="Senha"  
+                            {{#if updateForm}} value="{{user.password}}" {{/if}}
+                            {{#if deleteForm}} value="{{user.password}}"readonly{{/if}} required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Perfil</label>
+                        {{#if createForm}}
+                        <select name="role" id="role" class="form-control" required>
+                            <option value="">-- Selecione --</option>
+                            <option value="administrador" >Administrador</option>
+                            <option value="usuario" >Usuário</option>
+                        </select>
+                        {{else}}
+                        <select name="role" id="role" class="form-control" {{#if deleteForm}}disabled{{/if}} required>
+                            <option value="">-- Selecione --</option>
+                            <option value="administrador" {{#equal user.role "administrador"}}selected{{/equal}}>Administrador</option>
+                            <option value="usuario" {{#equal user.role "usuario"}}selected{{/equal}}>Usuário</option>
+                        </select>
+                        {{/if}}
+                    </div>                
+                    <button type="submit" class="btn btn-primary button" {{#if deleteForm}}onclick="confirm('Você tem certeza?')" {{/if}}>
+                        {{#if createForm}}Criar{{else if updateForm}}Atualizar{{else}}Excluir{{/if}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
