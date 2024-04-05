@@ -20,7 +20,7 @@
                 <div class="collection-infos-container">
                     {{#if deleteForm}}
                     <div class="collection-cover">
-                        <img src="{{collection.Album.imageurl}}" alt="{{collection.Album.name}}"
+                        <img src="{{#if collection.Album.imageurl}}{{collection.Album.imageurl}}{{else}}/images/default-cover.jpg{{/if}}" alt="{{collection.Album.name}}"
                             title="{{collection.Album.name}}">
                     </div>
                     <div class="collection-infos">
@@ -33,7 +33,7 @@
                     </div>
                     {{else}}
                     <div class="collection-cover">
-                        <img src="{{album.imageurl}}" alt="{{album.name}}"
+                        <img src="{{#if album.imageurl}}{{album.imageurl}}{{else}}/images/default-cover.jpg{{/if}}" alt="{{album.name}}"
                             title="{{album.name}}">
                     </div>
                     <div class="collection-infos">

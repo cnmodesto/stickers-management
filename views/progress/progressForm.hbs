@@ -15,7 +15,7 @@
             <div class="wrapper-items">
                 <div class="progresso-infos-container">
                     <div class="progresso-cover">
-                        <img src="{{collection.Album.imageurl}}" alt="{{collection.Album.name}}"
+                        <img src="{{#if collection.Album.imageurl}}{{collection.Album.imageurl}}{{else}}/images/default-cover.jpg{{/if}}" alt="{{collection.Album.name}}"
                             title="{{collection.Album.name}}">
                     </div>
                     <div class="progresso-infos">
